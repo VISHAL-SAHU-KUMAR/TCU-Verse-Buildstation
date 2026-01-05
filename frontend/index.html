@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillLens AI - Career Intelligence for Indian Students</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-brain"></i>
+                <span>SkillLens AI</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#roles" class="nav-link">Career Roles</a>
+                <button class="btn btn-primary" id="loginBtn">Login</button>
+                <button class="btn btn-secondary" id="signupBtn">Sign Up</button>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Bridge Your <span class="gradient-text">Skill Gap</span><br>
+                        Land Your Dream Job
+                    </h1>
+                    <p class="hero-subtitle">
+                        AI-powered career intelligence platform for Indian students.
+                        Upload your resume, get instant skill analysis, and receive personalized learning roadmaps.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-large btn-primary" id="getStartedBtn">
+                            <i class="fas fa-rocket"></i> Get Started Free
+                        </button>
+                        <button class="btn btn-large btn-outline">
+                            <i class="fas fa-play-circle"></i> Watch Demo
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">Students Helped</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Career Roles</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <strong>Skill Score</strong>
+                            <p>78/100</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <strong>Python</strong>
+                            <p></p>Recommended</p>
+                        </div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <strong>Learning Path</strong>
+                            <p>Beginner → Pro</p>
+                        </div>
+                    </div>
+                    <div class="hero-illustration">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose SkillLens AI?</h2>
+                <p class="section-subtitle">Advanced career intelligence powered by AI</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>Smart Resume Analysis</h3>
+                    <p>Upload your resume and let our AI extract skills, experience, and certifications instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Skill Gap Detection</h3>
+                    <p>Compare your skills with industry requirements and identify exactly what you're missing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Personalized Roadmap</h3>
+                    <p>Get a step-by-step learning path from beginner to advanced, tailored to your career goal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Course Recommendations</h3>
+                    <p>Discover the best free and affordable courses to fill your skill gaps effectively.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Real-Time Scoring</h3>
+                    <p>See your skill match percentage for each role and track your progress over time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>50+ Career Roles</h3>
+                    <p>From Data Analyst to DevOps Engineer - explore diverse tech career paths.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How SkillLens Works</h2>
+                <p class="section-subtitle">4 simple steps to career clarity</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <i class="fas fa-upload"></i>
+                        <h3>Upload Resume</h3>
+                        <p>Upload your PDF resume - our AI will extract all relevant information.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Select Target Role</h3>
+                        <p>Choose your dream job role from 50+ tech career options.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Analysis</h3>
+                        <p>Get instant skill gap analysis with detailed score and insights.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <i class="fas fa-road"></i>
+                        <h3>Follow Roadmap</h3>
+                        <p>Receive personalized learning roadmap with courses and projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Roles -->
+    <section class="roles" id="roles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Career Roles</h2>
+                <p class="section-subtitle">Choose your career path and start learning</p>
+            </div>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analyst</h3>
+                    <p>Python, SQL, Excel, Power BI</p>
+                    <span class="role-tag">High Demand</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Full Stack Developer</h3>
+                    <p>React, Node.js, MongoDB</p>
+                    <span class="role-tag">Top Salary</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Data Scientist</h3>
+                    <p>ML, Python, TensorFlow</p>
+                    <span class="role-tag">AI/ML</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Developer</h3>
+                    <p>Node.js, Python, SQL</p>
+                    <span class="role-tag">Growing</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Frontend Developer</h3>
+                    <p>React, HTML, CSS, JS</p>
+                    <span class="role-tag">Creative</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Engineer</h3>
+                    <p>AWS, Docker, Kubernetes</p>
+                    <span class="role-tag">Future-Ready</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>DevOps Engineer</h3>
+                    <p>CI/CD, Docker, Jenkins</p>
+                    <span class="role-tag">High Demand</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Developer</h3>
+                    <p>React Native, Flutter</p>
+                    <span class="role-tag">Trending</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2></h2>Ready to Transform Your Career?</h2>
+                <p>Join thousands of Indian students who found their perfect career path with SkillLens AI</p>
+                <button class="btn btn-large btn-white" id="ctaBtn">
+                    <i class="fas fa-rocket"></i> Start Your Journey
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="nav-brand">
+                        <i class="fas fa-brain"></i>
+                        <span>SkillLens AI</span>
+                    </div>
+                    <p>Empowering Indian students with AI-driven career intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#roles">Career Roles</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <a href="#">Blog</a>
+                    <a href="#">Career Guide</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SkillLens AI. Made with ❤️ for Indian Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2>Welcome Back</h2>
+            <p>Login to access your skill analysis dashboard</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label></label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            <p class="modal-footer">
+                Don't have an account? <a href="#" id="switchToSignup">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close" id="closeSignup">&times;</span>
+            <h2>Create Account</h2>
+            <p>Join thousands of students on their career journey</p>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            <p class="modal-footer">
+                Already have an account? <a href="#" id="switchToLogin">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
