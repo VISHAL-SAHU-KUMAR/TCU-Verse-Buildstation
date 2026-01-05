@@ -1,0 +1,37 @@
+services:
+  # Web Service (Flask Backend)
+  - type: web
+    name: skilllens-ai
+    env: python
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+    healthCheckPath: /api/check-auth
+    autoDeploy: true
+
+  # Static Site (Optional - for separate frontend hosting)
+  - type: static
+    name: skilllens-frontend
+    env: static
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: echo "No build needed"
+    staticPublishPath: frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate

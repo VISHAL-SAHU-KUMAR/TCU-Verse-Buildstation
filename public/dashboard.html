@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SkillLens AI</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-brain"></i>
+            <span>SkillLens AI</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-item active" data-section="overview">
+                <i class="fas fa-home"></i>
+                <span>Overview</span>
+            </a>
+            <a href="#upload" class="nav-item" data-section="upload">
+                <i class="fas fa-upload"></i>
+                <span>Upload Resume</span>
+            </a>
+            <a href="#analysis" class="nav-item" data-section="analysis">
+                <i class="fas fa-chart-line"></i>
+                <span>Skill Analysis</span>
+            </a>
+            <a href="#roadmap" class="nav-item" data-section="roadmap">
+                <i class="fas fa-route"></i>
+                <span>Learning Roadmap</span>
+            </a>
+            <a href="#courses" class="nav-item" data-section="courses">
+                <i class="fas fa-book-open"></i>
+                <span>Recommendations</span>
+            </a>
+            <a href="#history" class="nav-item" data-section="history">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#profile" class="nav-item" data-section="profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn btn-outline btn-block" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="mobile-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search roles, skills...">
+            </div>
+            <div class="user-menu">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=User&background=667eea&color=fff" alt="User">
+                    <span id="userName">User</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Section -->
+            <section id="overviewSection" class="content-section active">
+                <div class="section-header-dash">
+                    <h1>Welcome Back, <span id="userNameDisplay">User</span>!</h1>
+                    <p>Track your skill development and career progress</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Resumes Analyzed</span>
+                            <span class="stat-value" id="totalResumes">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Average Skill Score</span>
+                            <span class="stat-value" id="avgScore">0%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Skills Mastered</span>
+                            <span class="stat-value" id="skillsMastered">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Courses Recommended</span>
+                            <span class="stat-value" id="coursesCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-card" data-goto="upload">
+                            <i class="fas fa-upload"></i>
+                            <span>Upload New Resume</span>
+                        </button>
+                        <button class="action-card" data-goto="analysis">
+                            <i class="fas fa-search"></i>
+                            <span>Analyze Skills</span>
+                        </button>
+                        <button class="action-card" data-goto="roadmap">
+                            <i class="fas fa-route"></i>
+                            <span>View Roadmap</span>
+                        </button>
+                        <button class="action-card" data-goto="courses">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Get Courses</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Analyses -->
+                <div class="recent-section">
+                    <h2>Recent Analyses</h2>
+                    <div id="recentAnalyses" class="analyses-list">
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>No analyses yet. Upload your resume to get started!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section id="uploadSection" class="content-section">
+                <div class="section-header-dash">
+                    <h1>Upload Your Resume</h1>
+                    <p>Upload your PDF resume for AI-powered skill analysis</p>
+                </div>
+
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Drag & Drop your resume here</h3>
+                        <p>or click to browse</p>
+                        <input type="file" id="resumeInput" accept=".pdf" hidden>
+                        <button class="btn btn-primary" id="browseBtn">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                        <p class="upload-note">Supported format: PDF (Max 16MB)</p>
+                    </div>
+
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p id="uploadStatus">Uploading...</p>
+                    </div>
+
+                    <div class="upload-success" id="uploadSuccess" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Resume Uploaded Successfully!</h3>
+                        <p>Skills extracted and ready for analysis</p>
+                        <div class="extracted-preview" id="extractedPreview"></div>
+                        <button class="btn btn-primary" id="proceedToAnalysis">
+                            <i class="fas fa-arrow-right"></i> Proceed to Analysis
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis Section -->
+            <section id="analysisSection" class="content-section">
+                <div class="section-header-dash">
+                    <h1>Skill Gap Analysis</h1>
+                    <p>Compare your skills with industry requirements</p>
+                </div>
+
+                <div class="analysis-container">
+                    <!-- Role Selection -->
+                    <div class="role-selection" id="roleSelection">
+                        <h2>Select Your Target Role</h2>
+                        <div class="roles-selector">
+                            <div class="role-option" data-role="Data Analyst">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Data Analyst</span>
+                            </div>
+                            <div class="role-option" data-role="Full Stack Developer">
+                                <i class="fas fa-code"></i>
+                                <span>Full Stack Developer</span>
+                            </div>
+                            <div class="role-option" data-role="Data Scientist">
+                                <i class="fas fa-robot"></i>
+                                <span>Data Scientist</span>
+                            </div>
+                            <div class="role-option" data-role="Backend Developer">
+                                <i class="fas fa-server"></i>
+                                <span>Backend Developer</span>
+                            </div>
+                            <div class="role-option" data-role="Frontend Developer">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Frontend Developer</span>
+                            </div>
+                            <div class="role-option" data-role="Machine Learning Engineer">
+                                <i class="fas fa-brain"></i>
+                                <span>ML Engineer</span>
+                            </div>
+                            <div class="role-option" data-role="DevOps Engineer">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>DevOps Engineer</span>
+                            </div>
+                            <div class="role-option" data-role="Mobile App Developer">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Mobile Developer</span>
+                            </div>
+                            <div class="role-option" data-role="Cloud Engineer">
+                                <i class="fas fa-cloud"></i>
+                                <span>Cloud Engineer</span>
+                            </div>
+                            <div class="role-option" data-role="Cybersecurity Analyst">
+                                <i class="fas fa-lock"></i>
+                                <span>Cybersecurity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Results -->
+                    <div class="analysis-results" id="analysisResults" style="display: none;">
+                        <div class="score-card">
+                            <div class="score-circle">
+                                <svg viewBox="0 0 200 200">
+                                    <circle cx="100" cy="100" r="90" fill="none" stroke="#e0e0e0" stroke-width="15"/>
+                                    <circle id="scoreCircle" cx="100" cy="100" r="90" fill="none" stroke="#667eea" stroke-width="15"
+                                            stroke-dasharray="565" stroke-dashoffset="565" transform="rotate(-90 100 100)"/>
+                                </svg>
+                                <div class="score-text">
+                                    <span class="score-number" id="skillScore">0</span>
+                                    <span class="score-label">Skill Match</span>
+                                </div>
+                            </div>
+                            <div class="score-details">
+                                <h3 id="selectedRole">Data Analyst</h3>
+                                <p id="gapSummary">Analyzing your skills...</p>
+                                <div class="career-level">
+                                    <i class="fas fa-user"></i>
+                                    <span>Career Level: <strong id="careerLevel">Beginner</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills Breakdown -->
+                        <div class="skills-breakdown">
+                            <div class="skill-category">
+                                <h3><i class="fas fa-check-circle"></i> Skills You Have</h3>
+                                <div class="skill-tags" id="presentSkills">
+                                    <span class="skill-tag present">Python</span>
+                                    <span class="skill-tag present">SQL</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3><i class="fas fa-exclamation-triangle"></i> Critical Missing Skills</h3>
+                                <div class="skill-tags" id="criticalMissing">
+                                    <span class="skill-tag missing">Excel</span>
+                                    <span class="skill-tag missing">Power BI</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3><i class="fas fa-info-circle"></i> Important Missing Skills</h3>
+                                <div class="skill-tags" id="importantMissing">
+                                    <span class="skill-tag optional">Tableau</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3><i class="fas fa-star"></i> Nice-to-Have Skills</h3>
+                                <div class="skill-tags" id="niceToHave">
+                                    <span class="skill-tag optional">R</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Roadmap Section -->
+            <section id="roadmapSection" class="content-section">
+                <div class="section-header-dash">
+                    <h1>Your Learning Roadmap</h1>
+                    <p>Follow this step-by-step path to master your target role</p>
+                </div>
+
+                <div class="roadmap-container" id="roadmapContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-route"></i>
+                        <p>Complete skill analysis to generate your personalized roadmap</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Courses Section -->
+            <section id="coursesSection" class="content-section">
+                <div class="section-header-dash">
+                    <h1>Course Recommendations</h1>
+                    <p>Curated learning resources to fill your skill gaps</p>
+                </div>
+
+                <div class="courses-container" id="coursesContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-book-open"></i>
+                        <p>Complete skill analysis to get personalized course recommendations</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section id="historySection" class="content-section">
+                <div class="section-header-dash">
+                    <h1>Analysis History</h1>
+                    <p>View your past skill analyses and track progress</p>
+                </div>
+
+                <div class="history-container" id="historyContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-history"></i>
+                        <p>No history available yet</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profileSection" class="content-section">
+                <div class="section-header-dash">
+                    <h1>User Profile</h1>
+                    <p>Manage your account settings and personal information</p>
+                </div>
+
+                <div class="profile-container">
+                    <!-- Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img id="profileAvatar" src="https://ui-avatars.com/api/?name=User&background=667eea&color=fff&size=120" alt="Profile">
+                                <button class="change-avatar-btn" id="changeAvatarBtn">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <div class="profile-info">
+                                <h2 id="profileName">User Name</h2>
+                                <p id="profileEmail">user@example.com</p>
+                                <span class="profile-badge">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Joined: <span id="profileJoinDate">Jan 2024</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Stats Summary -->
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-file-alt"></i>
+                                <div></div>
+                                    <strong id="profileResumeCount">0</strong>
+                                    <span>Resumes</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-chart-line"></i>
+                                <div>
+                                    <strong id="profileAnalysisCount">0</strong>
+                                    <span>Analyses</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <strong id="profileAvgScore">0%</strong>
+                                    <span>Avg Score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edit Profile Form -->
+                    <div class="profile-edit-card">
+                        <h3><i class="fas fa-edit"></i> Edit Profile</h3>
+                        <form id="editProfileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editFullName">Full Name</label>
+                                    <input type="text" id="editFullName" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editEmail">Email Address</label>
+                                    <input type="email" id="editEmail" placeholder="your.email@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editPhone">Phone Number (Optional)</label>
+                                    <input type="tel" id="editPhone" placeholder="+91 1234567890">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editLocation">Location (Optional)</label>
+                                    <input type="text" id="editLocation" placeholder="City, India">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="editBio">Bio (Optional)</label>
+                                <textarea id="editBio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="editLinkedIn">LinkedIn Profile (Optional)</label>
+                                <input type="url" id="editLinkedIn" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="editGitHub">GitHub Profile (Optional)</label>
+                                <input type="url" id="editGitHub" placeholder="https://github.com/yourusername">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Change Password Card -->
+                    <div class="profile-password-card">
+                        <h3><i class="fas fa-lock"></i> Change Password</h3>
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" placeholder="••••••••" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" placeholder="••••••••" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-key"></i> Update Password
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="profile-danger-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                        <p>Once you delete your account, there is no going back. Please be certain.</p>
+                        <button class="btn-danger" id="deleteAccountBtn">
+                            <i class="fas fa-trash-alt"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p></p>Analyzing your skills...</p>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
